@@ -22,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.rootViewController = ContainerController()
+        
+        if UserDefaults.standard.object(forKey: Constants.THEME_USER_DEFAULT_KEY) != nil {
+            Theme.current = UserDefaults.standard.bool(forKey:  Constants.THEME_USER_DEFAULT_KEY) ? LightTheme() : DarkTheme()
+        }
+        
+        
         FirebaseApp.configure()
         return true
     }
