@@ -9,7 +9,6 @@ class ContainerController: UIViewController {
     var isExpanded = false
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHomeController()
@@ -38,6 +37,8 @@ class ContainerController: UIViewController {
     }
     
     func configureHomeController() {
+        
+        
         let homeController = HomeController()
         homeController.delegate = self
         centerController = UINavigationController(rootViewController: homeController)
@@ -45,6 +46,8 @@ class ContainerController: UIViewController {
         view.addSubview(centerController.view)
         addChild(centerController)
         centerController.didMove(toParent: self)
+        
+        
     }
     
     // Menu butonu diğer Controller içinde bulunuyor.
@@ -91,7 +94,7 @@ class ContainerController: UIViewController {
     func didSelectMenuOption (menuOption: MenuOption) {
         switch menuOption {
         case .MainPage:
-            print("Ana sayfaya git")
+            return // sadece return
         case .Password:
             let passwordCont = PasswordController()
             present(UINavigationController(rootViewController: passwordCont), animated: true, completion: nil)
@@ -110,7 +113,6 @@ class ContainerController: UIViewController {
 
 extension ContainerController: HomeControllerDelegate {
     func handleMenuToggle(forMenuOption menuOption: MenuOption?) {
-       
         
         if !isExpanded {
             configureMenuController()

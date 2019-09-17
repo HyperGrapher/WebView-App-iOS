@@ -8,7 +8,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
     
     var delegate: HomeControllerDelegate?
     var webView: WKWebView!
-    
+    var canGetParams = true
     
     // Firebase
     var ref: DatabaseReference!
@@ -18,8 +18,25 @@ class HomeController: UIViewController, WKNavigationDelegate {
         
         super.viewDidLoad()
         
+        // touch id ile giriş aktif mi?
+        let isTouchIDSet = UserDefaults.standard.bool(forKey: "isTouchIDSet")
+        let isAllowedToRun = false  //UserDefaults.standard.bool(forKey: "isAllowedToRun")
+        
+        print(" - - - - - touch id is \(isTouchIDSet)")
+        
+        // Aktifse LockController'a git.
+        if isAllowedToRun{
+            print("-------------- touch id is set")
+            let lockCont = LockController()
+            present(UINavigationController(rootViewController: lockCont), animated: true, completion: nil)
+            UserDefaults.standard.set(true, forKey: "isAllowedToRun")
+        } else {
+            print("---------- Skipping touch id isTouchIDSet: \(isTouchIDSet)   -   isAllowedToRun: \(isAllowedToRun)")
+        }
+        
         view.backgroundColor = .white
         
+        // Eğer firebase user yoksa oluştur
         createAnonymUserIfNotExist()
         
         configureNavigationBar()
@@ -36,7 +53,8 @@ class HomeController: UIViewController, WKNavigationDelegate {
             self.configureWebview(link: link!)
         }
         
-        // Bildirimler sayfasından gelen tıklamaları dinler
+        // NotificationController'dan gelen tıklamaları dinler
+        // ve visitNotificationLink fonksiyonunu çalıştırır.
         NotificationCenter.default.addObserver(self, selector:
             #selector(visitNotificationLink), name: Notification.Name("notification_link"),
                                               object: nil)
@@ -44,7 +62,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
         
     }
     
-    // Eğer bidlrim sayfasından gelen tıklama varsa linki yükler.
+    // Eğer NotificationController'dan gelen tıklama varsa linki yükler.
     @objc func visitNotificationLink (notification: NSNotification){
         let link = UserDefaults.standard.string(forKey: "link") ?? ""
         configureWebview(link: link)
@@ -79,14 +97,40 @@ class HomeController: UIViewController, WKNavigationDelegate {
         
         // link yazım hatalarından kaynaklı çökmeleri engellemek için,
         // linkler http veya https ile başlamalı
-        guard let url = navigationAction.request.url, let scheme = url.scheme, scheme.contains("http") else {
+        guard let myUrl = navigationAction.request.url, let scheme = myUrl.scheme, scheme.contains("http") else {
             decisionHandler(.cancel)
             return
         }
         
+        // Eğer varsa URL parametrelerini al
+        let params = URL(string: myUrl.absoluteString)!
+
+        // parametereler içinde widget tanımlıysa geri kalan kodu işlet
+        if let widgetParam: String = params["widget"]{
+            
+            let siteParam: String = params["site"]!
+            
+            // canGetParams:
+            // Sayfa tekrar yüklendiğinde veya her ileri/geri navigasyonda
+            // URL parametrelerini tekrar alıp Widget eklemeyi önler.
+            // handleReload, handleForward, handleBackward methodlarında değeri false olarak değişir
+            if canGetParams {
+                print("- - - - - - - - - - - - - - - ")
+                print(myUrl.absoluteString)
+                print("Widget: \(widgetParam) | site: \(siteParam)")
+            }
+            
+            // Her seferinde değeri true olarak resetle
+            canGetParams = true
+            
+           
+
+        }
         
         
-        print("----------------- *******: ", url)
+        
+
+        
         decisionHandler(.allow)
         
         
@@ -107,15 +151,12 @@ class HomeController: UIViewController, WKNavigationDelegate {
                     return
                 }
                 
-                print("-------------  USER CREATED  -------------------")
                 
                 let uid: String? = authResult?.user.uid as String?
                 print(uid!)
                 self.saveUserToDatabase(uid: uid!)
                 
             }
-        } else {
-            print("-------------  already signed in  -------------------")
         }
         
         
@@ -126,7 +167,6 @@ class HomeController: UIViewController, WKNavigationDelegate {
     // Yeni user oluşturulunca database'e uid'sini kaydet
     func saveUserToDatabase(uid: String){
         
-        print("-------------  SAVING USER  -------------------")
         
         let date = Date()
         let format = DateFormatter()
@@ -147,7 +187,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
     func configureNavigationBar() {
         
         
-        navigationController?.navigationBar.barTintColor = .darkGray
+        navigationController?.navigationBar.barTintColor = Constants.theme.getTheme()
         navigationController?.navigationBar.barStyle = .black
         
         
@@ -185,8 +225,6 @@ class HomeController: UIViewController, WKNavigationDelegate {
     @objc func handleMenuToggle() {
         delegate?.handleMenuToggle(forMenuOption: nil)
         
-        print("test 1")
-        
     }
     
     // Exit app
@@ -199,7 +237,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
     
     
     @objc func handleReload() {
-        
+        canGetParams = false
         webView?.reload()
         
     }
@@ -208,6 +246,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
     @objc func handleForward() {
         
         if webView.canGoForward {
+            canGetParams = false
             webView?.goForward()
         }
         
@@ -217,6 +256,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
     @objc func handleBackward() {
         
         if webView.canGoBack {
+            canGetParams = false
             webView?.goBack()
         }
         
@@ -242,3 +282,10 @@ class HomeController: UIViewController, WKNavigationDelegate {
     
 }
 
+// URL parametrelerini ayırmak için gerekli extension
+extension URL {
+    subscript(queryParam:String) -> String? {
+        guard let url = URLComponents(string: self.absoluteString) else { return nil }
+        return url.queryItems?.first(where: { $0.name == queryParam })?.value
+    }
+}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6753AE13233108CF0037FF95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6753AE12233108CF0037FF95 /* Constants.swift */; };
 		677A0DC82330C62500CB8B3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DC72330C62500CB8B3A /* AppDelegate.swift */; };
 		677A0DD02330C62500CB8B3A /* webview.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DCE2330C62500CB8B3A /* webview.xcdatamodeld */; };
 		677A0DD22330C62600CB8B3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 677A0DD12330C62600CB8B3A /* Assets.xcassets */; };
@@ -24,12 +25,16 @@
 		677A0DF62330CAB500CB8B3A /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DF52330CAB500CB8B3A /* MenuOptionCell.swift */; };
 		677A0DF92330CBCB00CB8B3A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677A0DF82330CBCB00CB8B3A /* WebKit.framework */; };
 		677A0DFB2330CD3600CB8B3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 677A0DFA2330CD3600CB8B3A /* GoogleService-Info.plist */; };
+		67A3ADA1233122DF00D122CF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A3ADA0233122DF00D122CF /* Colors.xcassets */; };
+		67A3ADA3233123A500D122CF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3ADA2233123A500D122CF /* Theme.swift */; };
+		67A3ADA62331282600D122CF /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3ADA52331282600D122CF /* ThemeProtocol.swift */; };
 		7913B28973D1A2ABE6EC84D7 /* Pods_webview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965986EE0206BA12D00EA8C1 /* Pods_webview.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		34821E5AE0D1815CCAC0418C /* Pods-webview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webview.debug.xcconfig"; path = "Target Support Files/Pods-webview/Pods-webview.debug.xcconfig"; sourceTree = "<group>"; };
 		4F1F53C8712016A6DAEC8420 /* Pods-webview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webview.release.xcconfig"; path = "Target Support Files/Pods-webview/Pods-webview.release.xcconfig"; sourceTree = "<group>"; };
+		6753AE12233108CF0037FF95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		677A0DC42330C62500CB8B3A /* webview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = webview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		677A0DC72330C62500CB8B3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		677A0DCF2330C62500CB8B3A /* webview.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = webview.xcdatamodel; sourceTree = "<group>"; };
@@ -49,6 +54,9 @@
 		677A0DF52330CAB500CB8B3A /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
 		677A0DF82330CBCB00CB8B3A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		677A0DFA2330CD3600CB8B3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		67A3ADA0233122DF00D122CF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		67A3ADA2233123A500D122CF /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		67A3ADA52331282600D122CF /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		965986EE0206BA12D00EA8C1 /* Pods_webview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,6 +89,15 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		6753AE14233122870037FF95 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				677A0DD12330C62600CB8B3A /* Assets.xcassets */,
+				67A3ADA0233122DF00D122CF /* Colors.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		677A0DBB2330C62500CB8B3A = {
 			isa = PBXGroup;
 			children = (
@@ -102,13 +119,14 @@
 		677A0DC62330C62500CB8B3A /* webview */ = {
 			isa = PBXGroup;
 			children = (
+				67A3ADA42331280900D122CF /* Theme */,
+				6753AE14233122870037FF95 /* Resource */,
 				67231D4B2330EAEA006DF115 /* Data */,
 				677A0DEC2330C81100CB8B3A /* Utils */,
 				677A0DEB2330C80A00CB8B3A /* Model */,
 				677A0DEA2330C7FA00CB8B3A /* View */,
 				677A0DDD2330C67000CB8B3A /* Controller */,
 				677A0DC72330C62500CB8B3A /* AppDelegate.swift */,
-				677A0DD12330C62600CB8B3A /* Assets.xcassets */,
 				677A0DD32330C62600CB8B3A /* LaunchScreen.storyboard */,
 				677A0DFA2330CD3600CB8B3A /* GoogleService-Info.plist */,
 				677A0DD62330C62600CB8B3A /* Info.plist */,
@@ -152,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				677A0DF12330C96800CB8B3A /* Protocols.swift */,
+				6753AE12233108CF0037FF95 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -163,6 +182,15 @@
 				965986EE0206BA12D00EA8C1 /* Pods_webview.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67A3ADA42331280900D122CF /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				67A3ADA2233123A500D122CF /* Theme.swift */,
+				67A3ADA52331282600D122CF /* ThemeProtocol.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				677A0DD52330C62600CB8B3A /* LaunchScreen.storyboard in Resources */,
+				67A3ADA1233122DF00D122CF /* Colors.xcassets in Resources */,
 				677A0DD22330C62600CB8B3A /* Assets.xcassets in Resources */,
 				677A0DFB2330CD3600CB8B3A /* GoogleService-Info.plist in Resources */,
 			);
@@ -283,6 +312,7 @@
 				677A0DE52330C77400CB8B3A /* PasswordController.swift in Sources */,
 				677A0DE72330C78E00CB8B3A /* NotificationController.swift in Sources */,
 				677A0DC82330C62500CB8B3A /* AppDelegate.swift in Sources */,
+				67A3ADA62331282600D122CF /* ThemeProtocol.swift in Sources */,
 				677A0DF22330C96800CB8B3A /* Protocols.swift in Sources */,
 				677A0DF42330C9EC00CB8B3A /* LockController.swift in Sources */,
 				677A0DD02330C62500CB8B3A /* webview.xcdatamodeld in Sources */,
@@ -291,6 +321,8 @@
 				677A0DF62330CAB500CB8B3A /* MenuOptionCell.swift in Sources */,
 				677A0DDF2330C6A200CB8B3A /* ContainerController.swift in Sources */,
 				677A0DE32330C73100CB8B3A /* MenuController.swift in Sources */,
+				6753AE13233108CF0037FF95 /* Constants.swift in Sources */,
+				67A3ADA3233123A500D122CF /* Theme.swift in Sources */,
 				677A0DE12330C71600CB8B3A /* HomeController.swift in Sources */,
 				677A0DE92330C7A600CB8B3A /* ThemeController.swift in Sources */,
 			);
@@ -431,7 +463,8 @@
 			baseConfigurationReference = 34821E5AE0D1815CCAC0418C /* Pods-webview.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = webview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -439,6 +472,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.link.webview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -449,7 +483,8 @@
 			baseConfigurationReference = 4F1F53C8712016A6DAEC8420 /* Pods-webview.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = webview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,6 +492,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.link.webview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

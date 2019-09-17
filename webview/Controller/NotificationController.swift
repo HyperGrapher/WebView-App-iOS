@@ -1,6 +1,6 @@
 import UIKit
-import FirebaseAuth
 import FirebaseDatabase
+import FirebaseAuth
 
 class NotificationController: UITableViewController {
     
@@ -70,7 +70,7 @@ class NotificationController: UITableViewController {
         
         view.backgroundColor = .white
         
-        navigationController?.navigationBar.barTintColor = .darkGray
+        navigationController?.navigationBar.barTintColor = Constants.theme.main1
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Bildirimler"
         navigationController?.navigationBar.barStyle = .black
@@ -95,14 +95,20 @@ class NotificationController: UITableViewController {
         return cell
     }
     
+    // Tıklama olunca Link varsa webview ile aç
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        /** REMOVE
+         */
+        UserDefaults.standard.set(false, forKey: "isTouchIDSet") // TODO remove
+        
         let link: String = notificationList[indexPath.row].link ?? ""
         if !link.isEmpty {
             
             if link.contains("http") {
                 UserDefaults.standard.set(link, forKey: "link") // Linki userDefaults'a kaydet
                 handleDismiss() // sayfayı kapat
-                // HomeController içindeki listener'ı tetikler ve gönderilen link açılır.
+                // HomeController'daki listener'ı tetikler ve userDefaults ile gönderilen link açılır.
                 NotificationCenter.default.post(name: Notification.Name("notification_link"), object: nil)
                 
             }

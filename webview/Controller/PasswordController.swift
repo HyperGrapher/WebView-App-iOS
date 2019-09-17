@@ -9,6 +9,10 @@ class PasswordController: UIViewController {
         
         configureUI()
         
+        UserDefaults.standard.set(true, forKey: "isTouchIDSet") //
+        UserDefaults.standard.set(true, forKey: "isAllowedToRun") //
+        
+        
     }
     
     
