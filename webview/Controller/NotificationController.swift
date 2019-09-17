@@ -68,9 +68,9 @@ class NotificationController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         
-        view.backgroundColor = .white
+        view.backgroundColor = Theme.current.background
+        navigationController?.navigationBar.barTintColor = Theme.current.tint
         
-        navigationController?.navigationBar.barTintColor = Constants.theme.main1
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Bildirimler"
         navigationController?.navigationBar.barStyle = .black

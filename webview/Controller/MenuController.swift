@@ -22,7 +22,7 @@ class MenuController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(MenuOptionCell.self, forCellReuseIdentifier: reuseIdentifer)
-        tableView.backgroundColor = .darkGray
+        tableView.backgroundColor = Theme.current.tintDarker
         tableView.separatorStyle = .none
         tableView.rowHeight = 80 // Herbir drawer menu iteminin yüksekliği
         

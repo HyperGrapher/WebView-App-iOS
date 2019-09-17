@@ -48,9 +48,9 @@ class LockController: UIViewController {
     
     func configureUI() {
         
-        view.backgroundColor = .white
+        view.backgroundColor = Theme.current.background
+        navigationController?.navigationBar.barTintColor = Theme.current.tint
         
-        navigationController?.navigationBar.barTintColor = .darkGray
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "TouchID ile Giriş"
         navigationController?.navigationBar.barStyle = .black

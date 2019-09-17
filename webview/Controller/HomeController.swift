@@ -34,7 +34,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
             print("---------- Skipping touch id isTouchIDSet: \(isTouchIDSet)   -   isAllowedToRun: \(isAllowedToRun)")
         }
         
-        view.backgroundColor = .white
+        view.backgroundColor = Theme.current.background
         
         // Eğer firebase user yoksa oluştur
         createAnonymUserIfNotExist()
@@ -187,7 +187,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
     func configureNavigationBar() {
         
         
-        navigationController?.navigationBar.barTintColor = Constants.theme.getTheme()
+        navigationController?.navigationBar.barTintColor = Theme.current.tint
         navigationController?.navigationBar.barStyle = .black
         
         

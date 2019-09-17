@@ -23,9 +23,9 @@ class PasswordController: UIViewController {
     
     
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = Theme.current.background
+        navigationController?.navigationBar.barTintColor = Theme.current.tint
         
-        navigationController?.navigationBar.barTintColor = .darkGray
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Şifre İşlemleri"
         navigationController?.navigationBar.barStyle = .black
