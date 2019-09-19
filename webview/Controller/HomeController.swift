@@ -13,16 +13,8 @@ class HomeController: UIViewController, WKNavigationDelegate {
     // Firebase
     var ref: DatabaseReference!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(" -- -- - - - - * * * * * ** * * * * * * * * * Will Appear")
-        
-        view.backgroundColor = Theme.current.background
-        navigationController?.navigationBar.barTintColor = Theme.current.tint
-        
-    }
-    
-    
+    var widgetList = [WidgetModel]()
+   
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -286,7 +278,13 @@ class HomeController: UIViewController, WKNavigationDelegate {
         
     }
     
-    
+    // Tema değiştiğinde renkeri güncelle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.backgroundColor = Theme.current.background
+        navigationController?.navigationBar.barTintColor = Theme.current.tint
+        
+    }
     
     
 }
