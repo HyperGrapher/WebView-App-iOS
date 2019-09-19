@@ -39,6 +39,7 @@
 		4F1F53C8712016A6DAEC8420 /* Pods-webview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webview.release.xcconfig"; path = "Target Support Files/Pods-webview/Pods-webview.release.xcconfig"; sourceTree = "<group>"; };
 		6735376223315AB000EC7E06 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
 		6753AE12233108CF0037FF95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		67635A9D2333DCC600CC9896 /* webview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = webview.entitlements; sourceTree = "<group>"; };
 		677A0DC42330C62500CB8B3A /* webview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = webview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		677A0DC72330C62500CB8B3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		677A0DCF2330C62500CB8B3A /* webview.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = webview.xcdatamodel; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		677A0DC62330C62500CB8B3A /* webview */ = {
 			isa = PBXGroup;
 			children = (
+				67635A9D2333DCC600CC9896 /* webview.entitlements */,
 				67A3ADA42331280900D122CF /* Theme */,
 				6753AE14233122870037FF95 /* Resource */,
 				67231D4B2330EAEA006DF115 /* Data */,
@@ -236,6 +238,11 @@
 				TargetAttributes = {
 					677A0DC32330C62500CB8B3A = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -475,6 +482,7 @@
 			baseConfigurationReference = 34821E5AE0D1815CCAC0418C /* Pods-webview.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = webview/webview.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = webview/Info.plist;
@@ -495,6 +503,7 @@
 			baseConfigurationReference = 4F1F53C8712016A6DAEC8420 /* Pods-webview.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = webview/webview.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = webview/Info.plist;

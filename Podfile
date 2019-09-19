@@ -9,6 +9,7 @@ target 'webview' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/InAppMessaging'
-  pod 'Firebase/Analytics' # InAppMessaging için gerekli
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics' # Messaging / InAppMessaging için gerekli
 
 end
