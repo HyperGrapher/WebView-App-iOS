@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/burak/Projects/Ticari/webview/webview/Persistance/Widget+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/burak/Projects/Ticari/webview/webview/Persistance/Widget+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:webview.xcodeproj">
    </FileRef>
    <FileRef

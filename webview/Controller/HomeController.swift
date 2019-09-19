@@ -2,6 +2,7 @@ import UIKit
 import WebKit
 import FirebaseDatabase
 import FirebaseAuth
+import CoreData
 
 // Webviewden sorumlu HomeController
 class HomeController: UIViewController, WKNavigationDelegate {
@@ -13,11 +14,13 @@ class HomeController: UIViewController, WKNavigationDelegate {
     // Firebase
     var ref: DatabaseReference!
     
-    var widgetList = [WidgetModel]()
+    var widgetList = [Widget]()
    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        getSavedWidgets()
         
         // touch id ile giriş aktif mi?
         let isTouchIDSet = UserDefaults.standard.bool(forKey: "isTouchIDSet")
@@ -107,23 +110,26 @@ class HomeController: UIViewController, WKNavigationDelegate {
         let params = URL(string: myUrl.absoluteString)!
 
         // parametereler içinde widget tanımlıysa geri kalan kodu işlet
-        if let widgetParam: String = params["widget"]{
+        if let actionParam: String = params["widget"]{
             
-            let siteParam: String = params["site"]!
-            
-            // canGetParams:
-            // Sayfa tekrar yüklendiğinde veya her ileri/geri navigasyonda
-            // URL parametrelerini tekrar alıp Widget eklemeyi önler.
-            // handleReload, handleForward, handleBackward methodlarında değeri false olarak değişir
-            if canGetParams {
-                print("- - - - - - - - - - - - - - - ")
-                print(myUrl.absoluteString)
-                print("Widget: \(widgetParam) | site: \(siteParam)")
+            if let siteParam: String = params["site"] {
+                
+                
+                // canGetParams:
+                // Sayfa tekrar yüklendiğinde veya her ileri/geri navigasyonda
+                // URL parametrelerini tekrar alıp Widget eklemeyi önler.
+                // handleReload, handleForward, handleBackward methodlarında değeri false olarak değişir
+                if canGetParams {
+                    print("- - - - - - - - - - - - - - - ")
+                    saveWidget(action: actionParam, siteName: siteParam, url: myUrl.host!)
+                }
+                
+               
+                
             }
-            
+        
             // Her seferinde değeri true olarak resetle
-            canGetParams = true
-            
+             canGetParams = true
            
 
         }
@@ -137,8 +143,53 @@ class HomeController: UIViewController, WKNavigationDelegate {
         
     }
     
+    var currentSite = ""
+    func  saveWidget(action: String, siteName: String, url: String) {
+        
+
+        
+        // Bazı siteler mobil siteye yönlendiriyor, iki kez aynı sayfa çağrılmış oluyor
+        // Bunu engellemek önceki site ismi ile kontrol ediyoruz.
+        if currentSite != siteName {
+            
+            print("Adding ---- Widget: \(action) | site: \(siteName) url:\(url)")
+            currentSite = siteName
+            
+            let widget = Widget(context: PersistanceService.context)
+            widget.name = siteName
+            widget.url = url
+            PersistanceService.saveContext()
+            
+            getSavedWidgets()
+        }
+        
+        
+       
+        
+    }
     
+    func getSavedWidgets() {
+        let fetchRequest: NSFetchRequest<Widget> =  Widget.fetchRequest()
     
+        
+        do {
+            widgetList = try PersistanceService.context.fetch(fetchRequest)
+            
+        } catch  {
+            
+        }
+        
+        
+        print("-- Start Widget List")
+        for it in widgetList {
+            if let item = it.name {
+                print(item)
+            }
+            
+        }
+        print("-- END Widget List")
+        
+    }
     
     func createAnonymUserIfNotExist(){
         

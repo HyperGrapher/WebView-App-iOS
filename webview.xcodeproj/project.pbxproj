@@ -26,6 +26,8 @@
 		677A0DF62330CAB500CB8B3A /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DF52330CAB500CB8B3A /* MenuOptionCell.swift */; };
 		677A0DF92330CBCB00CB8B3A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677A0DF82330CBCB00CB8B3A /* WebKit.framework */; };
 		677A0DFB2330CD3600CB8B3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 677A0DFA2330CD3600CB8B3A /* GoogleService-Info.plist */; };
+		6792A7D6233403F300521FC0 /* Widget+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792A7D5233403F300521FC0 /* Widget+CoreDataClass.swift */; };
+		6792A7D7233403F300521FC0 /* Widget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792A7D4233403F300521FC0 /* Widget+CoreDataProperties.swift */; };
 		679AFB2D2333F6F80026CAC1 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB2C2333F6F80026CAC1 /* PersistanceService.swift */; };
 		679AFB2F2333F9B10026CAC1 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB2E2333F9B10026CAC1 /* WidgetModel.swift */; };
 		679AFB362333FBF40026CAC1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679AFB352333FBF40026CAC1 /* NotificationCenter.framework */; };
@@ -33,6 +35,8 @@
 		679AFB3C2333FBF40026CAC1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 679AFB3A2333FBF40026CAC1 /* MainInterface.storyboard */; };
 		679AFB402333FBF40026CAC1 /* widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 679AFB342333FBF40026CAC1 /* widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		679AFB472333FE2A0026CAC1 /* NSCustomPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB462333FE2A0026CAC1 /* NSCustomPersistentContainer.swift */; };
+		679AFB49233401EF0026CAC1 /* NSCustomPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB48233401EF0026CAC1 /* NSCustomPersistentContainer.swift */; };
+		679AFB4B2334024F0026CAC1 /* webview.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DCE2330C62500CB8B3A /* webview.xcdatamodeld */; };
 		67A3ADA1233122DF00D122CF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A3ADA0233122DF00D122CF /* Colors.xcassets */; };
 		67A3ADA3233123A500D122CF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3ADA2233123A500D122CF /* Theme.swift */; };
 		67A3ADA62331282600D122CF /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3ADA52331282600D122CF /* ThemeProtocol.swift */; };
@@ -90,6 +94,8 @@
 		677A0DF52330CAB500CB8B3A /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
 		677A0DF82330CBCB00CB8B3A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		677A0DFA2330CD3600CB8B3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6792A7D4233403F300521FC0 /* Widget+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Widget+CoreDataProperties.swift"; path = "/Users/burak/Projects/Ticari/webview/webview/Persistance/Widget+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		6792A7D5233403F300521FC0 /* Widget+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Widget+CoreDataClass.swift"; path = "/Users/burak/Projects/Ticari/webview/webview/Persistance/Widget+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		679AFB2C2333F6F80026CAC1 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		679AFB2E2333F9B10026CAC1 /* WidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetModel.swift; sourceTree = "<group>"; };
 		679AFB342333FBF40026CAC1 /* widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +105,7 @@
 		679AFB3D2333FBF40026CAC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		679AFB452333FCA90026CAC1 /* widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widget.entitlements; sourceTree = "<group>"; };
 		679AFB462333FE2A0026CAC1 /* NSCustomPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCustomPersistentContainer.swift; sourceTree = "<group>"; };
+		679AFB48233401EF0026CAC1 /* NSCustomPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCustomPersistentContainer.swift; sourceTree = "<group>"; };
 		67A3ADA0233122DF00D122CF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		67A3ADA2233123A500D122CF /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		67A3ADA52331282600D122CF /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
@@ -170,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				679AFB2B2333F6D50026CAC1 /* Persistance */,
-				67635A9D2333DCC600CC9896 /* webview.entitlements */,
 				67A3ADA42331280900D122CF /* Theme */,
 				6753AE14233122870037FF95 /* Resource */,
 				677A0DEC2330C81100CB8B3A /* Utils */,
@@ -181,6 +187,7 @@
 				677A0DD32330C62600CB8B3A /* LaunchScreen.storyboard */,
 				677A0DFA2330CD3600CB8B3A /* GoogleService-Info.plist */,
 				677A0DD62330C62600CB8B3A /* Info.plist */,
+				67635A9D2333DCC600CC9896 /* webview.entitlements */,
 				677A0DCE2330C62500CB8B3A /* webview.xcdatamodeld */,
 			);
 			path = webview;
@@ -241,6 +248,8 @@
 		679AFB2B2333F6D50026CAC1 /* Persistance */ = {
 			isa = PBXGroup;
 			children = (
+				6792A7D5233403F300521FC0 /* Widget+CoreDataClass.swift */,
+				6792A7D4233403F300521FC0 /* Widget+CoreDataProperties.swift */,
 				679AFB2C2333F6F80026CAC1 /* PersistanceService.swift */,
 				679AFB462333FE2A0026CAC1 /* NSCustomPersistentContainer.swift */,
 			);
@@ -254,6 +263,7 @@
 				679AFB382333FBF40026CAC1 /* TodayViewController.swift */,
 				679AFB3A2333FBF40026CAC1 /* MainInterface.storyboard */,
 				679AFB3D2333FBF40026CAC1 /* Info.plist */,
+				679AFB48233401EF0026CAC1 /* NSCustomPersistentContainer.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -438,6 +448,8 @@
 				67A3ADA62331282600D122CF /* ThemeProtocol.swift in Sources */,
 				677A0DF22330C96800CB8B3A /* Protocols.swift in Sources */,
 				677A0DF42330C9EC00CB8B3A /* LockController.swift in Sources */,
+				6792A7D7233403F300521FC0 /* Widget+CoreDataProperties.swift in Sources */,
+				6792A7D6233403F300521FC0 /* Widget+CoreDataClass.swift in Sources */,
 				679AFB2D2333F6F80026CAC1 /* PersistanceService.swift in Sources */,
 				677A0DD02330C62500CB8B3A /* webview.xcdatamodeld in Sources */,
 				677A0DF02330C89D00CB8B3A /* NotiificationModel.swift in Sources */,
@@ -458,7 +470,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				679AFB49233401EF0026CAC1 /* NSCustomPersistentContainer.swift in Sources */,
 				679AFB392333FBF40026CAC1 /* TodayViewController.swift in Sources */,
+				679AFB4B2334024F0026CAC1 /* webview.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
