@@ -9,8 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
-import UserNotifications
-import FirebaseMessaging
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = ContainerController()
         
+        // Açılıta seçili temayı yükler
         if UserDefaults.standard.object(forKey: Constants.THEME_USER_DEFAULT_KEY) != nil {
             Theme.current = UserDefaults.standard.bool(forKey:  Constants.THEME_USER_DEFAULT_KEY) ? LightTheme() : DarkTheme()
         }
@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
+    /**
     // MARK: - Notification
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -125,6 +125,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(userInfo)
         completionHandler()
     }
+ 
+ */
     
 
 }

@@ -8,7 +8,7 @@ class MenuController: UIViewController {
     
     var tableView: UITableView!
     var delegate: HomeControllerDelegate?
-    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -49,13 +49,21 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
         let menuOption = MenuOption(rawValue: indexPath.row)
         cell.descriptionLabel.text = menuOption?.description
         cell.iconImageView.image = menuOption?.image
-        
+        cell.updateBackgroundColor() // Seçili temaya göre BG rengi verir
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let menuOption = MenuOption(rawValue: indexPath.row)
         delegate?.handleMenuToggle(forMenuOption: menuOption)
+    }
+    
+    // seçili temaya göre menu renklerini ver
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)        
+        view.backgroundColor = Theme.current.background
+        tableView.backgroundColor = Theme.current.tintDarker
+        tableView.reloadData()
     }
     
     

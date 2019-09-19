@@ -2,6 +2,8 @@ import UIKit
 
 class MenuOptionCell: UITableViewCell {
     
+    
+    
     let iconImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -38,6 +40,10 @@ class MenuOptionCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateBackgroundColor() {
+         backgroundColor = Theme.current.tintDarker
     }
     
 }

@@ -13,6 +13,15 @@ class HomeController: UIViewController, WKNavigationDelegate {
     // Firebase
     var ref: DatabaseReference!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(" -- -- - - - - * * * * * ** * * * * * * * * * Will Appear")
+        
+        view.backgroundColor = Theme.current.background
+        navigationController?.navigationBar.barTintColor = Theme.current.tint
+        
+    }
+    
     
     override func viewDidLoad() {
         
