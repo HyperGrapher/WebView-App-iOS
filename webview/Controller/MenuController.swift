@@ -82,7 +82,7 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
         cell.iconImageView.image = menuOption?.image
         cell.updateBackgroundColor() // Seçili temaya göre BG rengi verir
         
-        // Eğer menu item "bildirimler" ise bildirim sayısını göster
+        // Eğer menu itemi "bildirimler" ise bildirim sayısını göster
         if  menuOption?.description == Constants.MENU_NOTIFICATIONS {
             
             // Bildirim sayısı 0 değilse göster

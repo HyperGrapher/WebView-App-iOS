@@ -18,6 +18,7 @@ class NotificationController: UITableViewController {
         ref = Database.database().reference()
         
         getNotifications()
+        deleteNotificationCount()
         
     }
     
@@ -53,6 +54,13 @@ class NotificationController: UITableViewController {
         
     }
     
+    // Bildirim saysını sıfırla
+    func deleteNotificationCount() {
+        
+        let userId = Auth.auth().currentUser?.uid
+        ref.child("users/\(userId!)/badge").setValue(nil)
+        
+    }
     
     
     
