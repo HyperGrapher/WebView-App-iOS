@@ -7,6 +7,7 @@ enum MenuOption: Int, CustomStringConvertible {
     case Password
     case Notifications
     case Tema
+    case Widget
     
     var description: String {
         switch self {
@@ -14,6 +15,7 @@ enum MenuOption: Int, CustomStringConvertible {
         case .Password: return Constants.MENU_PASSWORD
         case .Notifications: return Constants.MENU_NOTIFICATIONS
         case .Tema: return Constants.MENU_TEMA
+        case .Widget: return Constants.MENU_WIDGET
         }
     }
     
@@ -23,6 +25,8 @@ enum MenuOption: Int, CustomStringConvertible {
         case .Password: return UIImage(named: "ic_menu_password") ?? UIImage()
         case .Notifications: return UIImage(named: "ic_menu_notification") ?? UIImage()
         case .Tema: return UIImage(named: "ic_menu_theme") ?? UIImage()
+        case .Widget: return UIImage(named: "ic_menu_widget") ?? UIImage()
+        
         }
     }
 }

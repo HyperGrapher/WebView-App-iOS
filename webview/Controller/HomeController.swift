@@ -57,17 +57,17 @@ class HomeController: UIViewController, WKNavigationDelegate {
             self.configureWebview(link: link!)
         }
         
-        // NotificationController'dan gelen tıklamaları dinler
+        // NotificationController'dan veya WidgetController'dan gelen tıklamaları dinler
         // ve visitNotificationLink fonksiyonunu çalıştırır.
         NotificationCenter.default.addObserver(self, selector:
-            #selector(visitNotificationLink), name: Notification.Name("notification_link"),
+            #selector(visitLink), name: Notification.Name(Constants.VISIT_URL),
                                               object: nil)
         
         
     }
     
-    // Eğer NotificationController'dan gelen tıklama varsa linki yükler.
-    @objc func visitNotificationLink (notification: NSNotification){
+    // Eğer NotificationController'dan veya WidgetController'dan gelen tıklama varsa linki yükler.
+    @objc func visitLink (notification: NSNotification){
         let link = UserDefaults.standard.string(forKey: "link") ?? ""
         configureWebview(link: link)
         // Link alındıktan sonra silinebilir.

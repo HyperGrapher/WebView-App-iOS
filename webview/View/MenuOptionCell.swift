@@ -15,7 +15,7 @@ class MenuOptionCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "Ana Sayfa"
+        label.text = ""
         return label
     }()
     

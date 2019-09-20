@@ -104,6 +104,9 @@ class ContainerController: UIViewController {
         case .Tema:
             let themeController = ThemeController()
             present(UINavigationController(rootViewController: themeController), animated: true, completion: nil)
+        case .Widget:
+            let widgetController = WidgetController()
+            present(UINavigationController(rootViewController: widgetController), animated: true, completion: nil)
         }
     }
     

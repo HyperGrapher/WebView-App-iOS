@@ -29,9 +29,10 @@ class MenuController: UIViewController {
     
     func getNotifications() {
         
-        let userId = Auth.auth().currentUser?.uid
+        guard let userId = Auth.auth().currentUser?.uid else {return}
+        
 
-        let notificationsRef = ref.child("users/\(userId!)/badge")
+        let notificationsRef = ref.child("users/\(userId)/badge")
         let queryRef = notificationsRef.queryOrdered(byChild: "message")
         
         
@@ -69,7 +70,7 @@ class MenuController: UIViewController {
 extension MenuController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 4 // Kaç adet drawer menu itemi var belirler.
+        return 5 // Kaç adet drawer menu itemi var belirler.
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
