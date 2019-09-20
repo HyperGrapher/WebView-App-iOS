@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		6735376323315AB000EC7E06 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6735376223315AB000EC7E06 /* ThemeView.swift */; };
 		6753AE13233108CF0037FF95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6753AE12233108CF0037FF95 /* Constants.swift */; };
+		676BA7A723352519007E3640 /* Widget+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792A7D5233403F300521FC0 /* Widget+CoreDataClass.swift */; };
+		676BA7A82335251C007E3640 /* Widget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792A7D4233403F300521FC0 /* Widget+CoreDataProperties.swift */; };
+		676BA7A92335251F007E3640 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB2C2333F6F80026CAC1 /* PersistanceService.swift */; };
+		676BA7AA23352885007E3640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 677A0DD12330C62600CB8B3A /* Assets.xcassets */; };
+		676BA7AC23352A27007E3640 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676BA7AB23352A27007E3640 /* CoreData.framework */; };
 		677A0DC82330C62500CB8B3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DC72330C62500CB8B3A /* AppDelegate.swift */; };
 		677A0DD02330C62500CB8B3A /* webview.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DCE2330C62500CB8B3A /* webview.xcdatamodeld */; };
 		677A0DD22330C62600CB8B3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 677A0DD12330C62600CB8B3A /* Assets.xcassets */; };
@@ -75,6 +80,7 @@
 		6735376223315AB000EC7E06 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
 		6753AE12233108CF0037FF95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		67635A9D2333DCC600CC9896 /* webview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = webview.entitlements; sourceTree = "<group>"; };
+		676BA7AB23352A27007E3640 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		677A0DC42330C62500CB8B3A /* webview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = webview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		677A0DC72330C62500CB8B3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		677A0DCF2330C62500CB8B3A /* webview.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = webview.xcdatamodel; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676BA7AC23352A27007E3640 /* CoreData.framework in Frameworks */,
 				679AFB362333FBF40026CAC1 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +245,7 @@
 		677A0DF72330CBCB00CB8B3A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				676BA7AB23352A27007E3640 /* CoreData.framework */,
 				677A0DF82330CBCB00CB8B3A /* WebKit.framework */,
 				965986EE0206BA12D00EA8C1 /* Pods_webview.framework */,
 				679AFB352333FBF40026CAC1 /* NotificationCenter.framework */,
@@ -386,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676BA7AA23352885007E3640 /* Assets.xcassets in Resources */,
 				679AFB3C2333FBF40026CAC1 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +480,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				679AFB49233401EF0026CAC1 /* NSCustomPersistentContainer.swift in Sources */,
+				676BA7A92335251F007E3640 /* PersistanceService.swift in Sources */,
+				676BA7A723352519007E3640 /* Widget+CoreDataClass.swift in Sources */,
+				676BA7A82335251C007E3640 /* Widget+CoreDataProperties.swift in Sources */,
 				679AFB392333FBF40026CAC1 /* TodayViewController.swift in Sources */,
 				679AFB4B2334024F0026CAC1 /* webview.xcdatamodeld in Sources */,
 			);
@@ -629,7 +641,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = webview/webview.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6H4353AJV;
 				INFOPLIST_FILE = webview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -651,8 +664,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = webview/webview.entitlements;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D6H4353AJV;
 				INFOPLIST_FILE = webview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -669,6 +683,7 @@
 		679AFB422333FBF40026CAC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_ENTITLEMENTS = widget/widget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6H4353AJV;
@@ -689,6 +704,7 @@
 		679AFB432333FBF40026CAC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_ENTITLEMENTS = widget/widget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6H4353AJV;

@@ -31,7 +31,7 @@ class ThemeView: UIView {
     
     let usernameLabel2: UILabel = {
         let label = UILabel()
-        label.text = "Light Tema / Dark Tema"
+        label.text = "Light Tema"
         label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -72,7 +72,7 @@ class ThemeView: UIView {
     @objc func handleSwitchAction(sender: UISwitch) {
         
         Theme.current = sender.isOn ? LightTheme() : DarkTheme()
-        
+        print("__ IS ON: \(sender.isOn)")
         UserDefaults.standard.set(sender.isOn, forKey: Constants.THEME_USER_DEFAULT_KEY)
         
     }

@@ -8,13 +8,16 @@
 
 import UIKit
 import NotificationCenter
-//import CoreData
+import CoreData
 
 class TodayViewController: UIViewController, NCWidgetProviding {
-        
+    
+    @IBOutlet weak var myLabel: UILabel!
+    var widgetList = [Widget]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+         someOtherFunction()
     }
         
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -26,12 +29,33 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         completionHandler(NCUpdateResult.newData)
     }
-    /**
+    
     func someOtherFunction() {
         // get the managed context
-        let managedContext = self.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Widget> =  Widget.fetchRequest()
+        
+        
+        do {
+            widgetList = try PersistanceService.context.fetch(fetchRequest)
+            
+        } catch  {
+            
+        }
+        
+        
+        print("-- Start Widget List")
+        for it in widgetList {
+            if let item = it.name {
+                print(item)
+                myLabel.text = item
+            }
+            
+        }
+        print("-- END Widget List")
         // have fun
     }
+    /**
+
     
     lazy var persistentContainer: NSPersistentContainer = {
         /*

@@ -10,10 +10,10 @@ enum MenuOption: Int, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .MainPage: return "Ana Sayfa"
-        case .Password: return "Şifre İşlemleri"
-        case .Notifications: return "Bildirimler"
-        case .Tema: return "Tema"
+        case .MainPage: return Constants.MENU_MAIN
+        case .Password: return Constants.MENU_PASSWORD
+        case .Notifications: return Constants.MENU_NOTIFICATIONS
+        case .Tema: return Constants.MENU_TEMA
         }
     }
     

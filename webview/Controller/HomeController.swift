@@ -226,7 +226,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
         let formattedDate = format.string(from: date)
         print(formattedDate)
         
-        ref.child("users").childByAutoId().setValue(["created": formattedDate ])
+        ref.child("users/\(uid)").setValue(["created": formattedDate ])
         
         
         
@@ -315,7 +315,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
         // TODO: Test sırasında firebase user'ı silmek için
         // Kaldırılacak
         
-        /**
+        
          
          do{
          try Auth.auth().signOut()
@@ -324,7 +324,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
          
          }
          
-         */
+         
         
         
     }

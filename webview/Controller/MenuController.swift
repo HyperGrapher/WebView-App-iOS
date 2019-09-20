@@ -1,5 +1,8 @@
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
+
 private let reuseIdentifer = "MenuOptionCell"
 
 // Drawer Menuyü oluşturur.
@@ -8,11 +11,39 @@ class MenuController: UIViewController {
     
     var tableView: UITableView!
     var delegate: HomeControllerDelegate?
+    
+    var ref: DatabaseReference!
+    var count: UInt? = 0
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        ref = Database.database().reference()
+        getNotifications()
+        
         configureTableView()
+        
+ 
+        
+    }
+    
+    func getNotifications() {
+        
+        let userId = Auth.auth().currentUser?.uid
+
+        let notificationsRef = ref.child("users/\(userId!)/badge")
+        let queryRef = notificationsRef.queryOrdered(byChild: "message")
+        
+        
+        queryRef.observe(.value, with: { snapshot in
+            
+            self.count = snapshot.childrenCount
+            self.tableView.reloadData()
+            print(" - - - - - - - -- - - -- ")
+            print("Count: \(self.count!)")
+            
+        })
+        
         
     }
     
@@ -50,6 +81,20 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
         cell.descriptionLabel.text = menuOption?.description
         cell.iconImageView.image = menuOption?.image
         cell.updateBackgroundColor() // Seçili temaya göre BG rengi verir
+        
+        // Eğer menu item "bildirimler" ise bildirim sayısını göster
+        if  menuOption?.description == Constants.MENU_NOTIFICATIONS {
+            
+            // Bildirim sayısı 0 değilse göster
+            if count != 0 {
+                cell.notificaitonLabel.text = "\(count!)"
+            } else {
+                // Sıfır ise boş string
+                cell.notificaitonLabel.text = ""
+            }
+            
+        }
+        
         return cell
     }
     
