@@ -95,8 +95,8 @@ class NotificationController: UITableViewController {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: cellID)
         
         
-        cell.textLabel?.text = notificationList[indexPath.row].title // " \(indexPath.row)"
-        cell.detailTextLabel?.text = notificationList[indexPath.row].message // " \(indexPath.row)"
+        cell.textLabel?.text = notificationList[indexPath.row].title
+        cell.detailTextLabel?.text = notificationList[indexPath.row].message 
         cell.detailTextLabel?.numberOfLines = 0
         cell.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         

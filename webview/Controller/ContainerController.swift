@@ -96,7 +96,7 @@ class ContainerController: UIViewController {
         case .MainPage:
             return // sadece return
         case .Password:
-            let passwordCont = PasswordController()
+            let passwordCont = FaceIDController()
             present(UINavigationController(rootViewController: passwordCont), animated: true, completion: nil)
         case .Notifications:
             let notificaitonCont = NotificationController()

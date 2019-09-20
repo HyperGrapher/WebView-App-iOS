@@ -1,24 +1,24 @@
 import UIKit
 
-class ThemeView: UIView {
-
-    // MARK: - Properties
-    var isLightTheme: Bool = true
+class FaceIDView: UIView {
     
-    let usernameLabel: UILabel = {
+    // MARK: - Properties
+    var isFaceIdActive: Bool = false
+    
+    let faceIDLabel: UILabel = {
         let label = UILabel()
-        label.text = "Light Tema "
+        label.text = "Face ID ile giriş"
         label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-
+    
     
     
     lazy var switchControl: UISwitch = {
         let switchControl = UISwitch()
-        switchControl.isOn = isLightTheme
+        switchControl.isOn = isFaceIdActive
         switchControl.onTintColor = UIColor(red: 55/255, green: 120/255, blue: 250/255, alpha: 1)
         switchControl.translatesAutoresizingMaskIntoConstraints = false
         switchControl.addTarget(self, action: #selector(handleSwitchAction), for: .valueChanged)
@@ -26,28 +26,30 @@ class ThemeView: UIView {
     }()
     
     
+
+    
     
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        if UserDefaults.standard.object(forKey: Constants.THEME_USER_DEFAULT_KEY) != nil {
-            isLightTheme = UserDefaults.standard.bool(forKey:  Constants.THEME_USER_DEFAULT_KEY)
+        if UserDefaults.standard.object(forKey: Constants.FACEID_USER_DEFAULT_KEY) != nil {
+            isFaceIdActive = UserDefaults.standard.bool(forKey:  Constants.FACEID_USER_DEFAULT_KEY)
         }
         
         
         
-        addSubview(usernameLabel)
-        usernameLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -10).isActive = true
-        usernameLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
+        addSubview(faceIDLabel)
+        faceIDLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -10).isActive = true
+        faceIDLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive = true
         
         addSubview(switchControl)
         switchControl.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         switchControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -12).isActive = true
         
-
-
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,13 +59,12 @@ class ThemeView: UIView {
     
     @objc func handleSwitchAction(sender: UISwitch) {
         
-        Theme.current = sender.isOn ? LightTheme() : DarkTheme()
-        print("__ IS ON: \(sender.isOn)")
-        UserDefaults.standard.set(sender.isOn, forKey: Constants.THEME_USER_DEFAULT_KEY)
+        print("__ FACE ID IS ON: \(sender.isOn)")
+        UserDefaults.standard.set(sender.isOn, forKey: Constants.FACEID_USER_DEFAULT_KEY)
         
     }
     
-
+    
     
     
 }

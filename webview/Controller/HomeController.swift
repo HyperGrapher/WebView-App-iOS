@@ -23,13 +23,13 @@ class HomeController: UIViewController, WKNavigationDelegate {
         getSavedWidgets()
         
         // touch id ile giriş aktif mi?
-        let isTouchIDSet = UserDefaults.standard.bool(forKey: "isTouchIDSet")
+        let isTouchIDSet = UserDefaults.standard.bool(forKey: Constants.FACEID_USER_DEFAULT_KEY)
         let isAllowedToRun = false  //UserDefaults.standard.bool(forKey: "isAllowedToRun")
         
         print(" - - - - - touch id is \(isTouchIDSet)")
         
         // Aktifse LockController'a git.
-        if isAllowedToRun{
+        if isTouchIDSet{
             print("-------------- touch id is set")
             let lockCont = LockController()
             present(UINavigationController(rootViewController: lockCont), animated: true, completion: nil)
@@ -149,7 +149,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
 
         
         // Bazı siteler mobil siteye yönlendiriyor, iki kez aynı sayfa çağrılmış oluyor
-        // Bunu engellemek önceki site ismi ile kontrol ediyoruz.
+        // Bunu engellemek için önceki site ismi ile kontrol ediyoruz.
         if currentSite != siteName {
             
             print("Adding ---- Widget: \(action) | site: \(siteName) url:\(url)")
@@ -205,7 +205,6 @@ class HomeController: UIViewController, WKNavigationDelegate {
                 
                 
                 let uid: String? = authResult?.user.uid as String?
-                print(uid!)
                 self.saveUserToDatabase(uid: uid!)
                 
             }

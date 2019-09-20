@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		670C110723356E0500A3A6BF /* FaceIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C110623356E0500A3A6BF /* FaceIDView.swift */; };
 		6735376323315AB000EC7E06 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6735376223315AB000EC7E06 /* ThemeView.swift */; };
 		6753AE13233108CF0037FF95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6753AE12233108CF0037FF95 /* Constants.swift */; };
 		676BA7A723352519007E3640 /* Widget+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792A7D5233403F300521FC0 /* Widget+CoreDataClass.swift */; };
@@ -21,7 +22,7 @@
 		677A0DDF2330C6A200CB8B3A /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DDE2330C6A200CB8B3A /* ContainerController.swift */; };
 		677A0DE12330C71600CB8B3A /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DE02330C71600CB8B3A /* HomeController.swift */; };
 		677A0DE32330C73100CB8B3A /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DE22330C73000CB8B3A /* MenuController.swift */; };
-		677A0DE52330C77400CB8B3A /* PasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DE42330C77400CB8B3A /* PasswordController.swift */; };
+		677A0DE52330C77400CB8B3A /* FaceIDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DE42330C77400CB8B3A /* FaceIDController.swift */; };
 		677A0DE72330C78E00CB8B3A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DE62330C78E00CB8B3A /* NotificationController.swift */; };
 		677A0DE92330C7A600CB8B3A /* ThemeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DE82330C7A600CB8B3A /* ThemeController.swift */; };
 		677A0DEE2330C87800CB8B3A /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DED2330C87800CB8B3A /* MenuOption.swift */; };
@@ -77,6 +78,7 @@
 /* Begin PBXFileReference section */
 		34821E5AE0D1815CCAC0418C /* Pods-webview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webview.debug.xcconfig"; path = "Target Support Files/Pods-webview/Pods-webview.debug.xcconfig"; sourceTree = "<group>"; };
 		4F1F53C8712016A6DAEC8420 /* Pods-webview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webview.release.xcconfig"; path = "Target Support Files/Pods-webview/Pods-webview.release.xcconfig"; sourceTree = "<group>"; };
+		670C110623356E0500A3A6BF /* FaceIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDView.swift; sourceTree = "<group>"; };
 		6735376223315AB000EC7E06 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
 		6753AE12233108CF0037FF95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		67635A9D2333DCC600CC9896 /* webview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = webview.entitlements; sourceTree = "<group>"; };
@@ -90,7 +92,7 @@
 		677A0DDE2330C6A200CB8B3A /* ContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
 		677A0DE02330C71600CB8B3A /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		677A0DE22330C73000CB8B3A /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
-		677A0DE42330C77400CB8B3A /* PasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordController.swift; sourceTree = "<group>"; };
+		677A0DE42330C77400CB8B3A /* FaceIDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDController.swift; sourceTree = "<group>"; };
 		677A0DE62330C78E00CB8B3A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		677A0DE82330C7A600CB8B3A /* ThemeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeController.swift; sourceTree = "<group>"; };
 		677A0DED2330C87800CB8B3A /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
@@ -206,7 +208,7 @@
 				677A0DDE2330C6A200CB8B3A /* ContainerController.swift */,
 				677A0DE02330C71600CB8B3A /* HomeController.swift */,
 				677A0DE22330C73000CB8B3A /* MenuController.swift */,
-				677A0DE42330C77400CB8B3A /* PasswordController.swift */,
+				677A0DE42330C77400CB8B3A /* FaceIDController.swift */,
 				677A0DE62330C78E00CB8B3A /* NotificationController.swift */,
 				677A0DE82330C7A600CB8B3A /* ThemeController.swift */,
 				677A0DF32330C9EC00CB8B3A /* LockController.swift */,
@@ -219,6 +221,7 @@
 			children = (
 				677A0DF52330CAB500CB8B3A /* MenuOptionCell.swift */,
 				6735376223315AB000EC7E06 /* ThemeView.swift */,
+				670C110623356E0500A3A6BF /* FaceIDView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -449,7 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6735376323315AB000EC7E06 /* ThemeView.swift in Sources */,
-				677A0DE52330C77400CB8B3A /* PasswordController.swift in Sources */,
+				677A0DE52330C77400CB8B3A /* FaceIDController.swift in Sources */,
 				677A0DE72330C78E00CB8B3A /* NotificationController.swift in Sources */,
 				677A0DC82330C62500CB8B3A /* AppDelegate.swift in Sources */,
 				67E8508123312B21002E6C0D /* DarkTheme.swift in Sources */,
@@ -463,6 +466,7 @@
 				677A0DD02330C62500CB8B3A /* webview.xcdatamodeld in Sources */,
 				677A0DF02330C89D00CB8B3A /* NotiificationModel.swift in Sources */,
 				677A0DEE2330C87800CB8B3A /* MenuOption.swift in Sources */,
+				670C110723356E0500A3A6BF /* FaceIDView.swift in Sources */,
 				677A0DF62330CAB500CB8B3A /* MenuOptionCell.swift in Sources */,
 				677A0DDF2330C6A200CB8B3A /* ContainerController.swift in Sources */,
 				679AFB2F2333F9B10026CAC1 /* WidgetModel.swift in Sources */,
