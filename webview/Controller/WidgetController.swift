@@ -25,19 +25,7 @@ class WidgetController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        } catch  {
-            
-        }
-        
-        
-        print("-- Start Widget List")
-        for it in widgetList {
-            if let item = it.name {
-                print(item)
-            }
-            
-        }
-        print("-- END Widget List")
+        } catch  { }
         
     }
     
@@ -103,7 +91,7 @@ class WidgetController: UITableViewController {
         let buttonRow = sender.tag
         let deletedWidget: Widget = widgetList.remove(at: buttonRow)
         PersistanceService.context.delete(deletedWidget)
-        
+        PersistanceService.saveContext()
         getSavedWidgets()
         
     }
@@ -115,8 +103,6 @@ class WidgetController: UITableViewController {
         
   
         var link: String = widgetList[indexPath.row].url ?? ""
-        
-    
         
         print(link)
         if !link.isEmpty {
@@ -130,9 +116,7 @@ class WidgetController: UITableViewController {
             handleDismiss() // sayfayı kapat
             // HomeController'daki listener'ı tetikler ve userDefaults ile gönderilen link açılır.
             NotificationCenter.default.post(name: Notification.Name(Constants.VISIT_URL), object: nil)
-                
-        
-            
+                            
         }
     }
     

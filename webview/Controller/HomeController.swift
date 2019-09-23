@@ -17,16 +17,19 @@ class HomeController: UIViewController, WKNavigationDelegate {
     var ref: DatabaseReference!
     
     var widgetList = [Widget]()
+    var nameList = [String]()
     
     var activityView: UIActivityIndicatorView?
     var container: UIView?
+    
+    var userID: String?
    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         
-        
+        configureWebview(link: "")
         
         getSavedWidgets()
         
@@ -76,7 +79,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
          activityView?.stopAnimating()
-        print(" - - - - - - Stopped ")
+        print(" - - - - - - stopAnimating ")
     }
     
     // Eğer NotificationController'dan veya WidgetController'dan gelen tıklama varsa linki yükler.
@@ -92,8 +95,8 @@ class HomeController: UIViewController, WKNavigationDelegate {
     
     func configureWebview(link: String) {
         
-        let url = URL(string: link)
-        let request = URLRequest(url: url!)
+        
+
         
         if webView == nil {
             webView = WKWebView()
@@ -109,23 +112,31 @@ class HomeController: UIViewController, WKNavigationDelegate {
             container!.backgroundColor = .clear
         }
         
-
+        
         if activityView == nil {
-
+            
             activityView = UIActivityIndicatorView(style: .whiteLarge)
             activityView?.center = self.view.center
             
-            activityView?.hidesWhenStopped = true           
+            activityView?.hidesWhenStopped = true
             
             container!.addSubview(activityView!)
             self.view.addSubview(container!)
             
         }
         
-        
-
         showActivityIndicatory()
-        webView?.load(request)
+
+        
+        if !link.isEmpty {
+            
+            let url = URL(string: link)
+            let request = URLRequest(url: url!)
+            
+            webView?.load(request)
+            
+        }
+        
         
         
         
@@ -156,7 +167,6 @@ class HomeController: UIViewController, WKNavigationDelegate {
                 // URL parametrelerini tekrar alıp Widget eklemeyi önler.
                 // handleReload, handleForward, handleBackward methodlarında değeri false olarak değişir
                 if canGetParams {
-                    print("- - - - - - - - - - - - - - - ")
                     saveWidget(action: actionParam, siteName: siteParam, url: myUrl.host!)
                 }
                 
@@ -170,14 +180,10 @@ class HomeController: UIViewController, WKNavigationDelegate {
 
         }
         
-        
-        
-
-        
         decisionHandler(.allow)
         
-        
     }
+    
     
     var currentSite = ""
     func  saveWidget(action: String, siteName: String, url: String) {
@@ -185,29 +191,30 @@ class HomeController: UIViewController, WKNavigationDelegate {
 
         
         // Bazı siteler mobil siteye yönlendiriyor, iki kez aynı sayfa çağrılmış oluyor
-        // Bunu engellemek için önceki site ismi ile kontrol ediyoruz.
+        // Aynı parametrelerle iki kez çağırmayı engellemek için önceki site ismi ile kontrol ediyoruz.
         if currentSite != siteName {
             
-            print("Adding ---- Widget: \(action) | site: \(siteName) url:\(url)")
+            print("Adding -> Widget: \(action) | site: \(siteName) url:\(url)")
             currentSite = siteName
             
-            let widget = Widget(context: PersistanceService.context)
-            widget.name = siteName
-            widget.url = url
-            PersistanceService.saveContext()
+            // Eğer hali hazırda site ismi kayıtlı değilse DB'ye ekle
+            if !nameList.contains(siteName){
+                let widget = Widget(context: PersistanceService.context)
+                widget.name = siteName
+                widget.url = url
+                PersistanceService.saveContext()
+                getSavedWidgets()
+            }
             
-            getSavedWidgets()
+     
         }
         
-        
-       
         
     }
     
     func getSavedWidgets() {
         let fetchRequest: NSFetchRequest<Widget> =  Widget.fetchRequest()
     
-        
         do {
             widgetList = try PersistanceService.context.fetch(fetchRequest)
             
@@ -216,14 +223,12 @@ class HomeController: UIViewController, WKNavigationDelegate {
         }
         
         
-        print("-- Start Widget List")
         for it in widgetList {
             if let item = it.name {
-                print(item)
+                nameList.append(item)
             }
             
         }
-        print("-- END Widget List")
         
     }
     
@@ -244,6 +249,8 @@ class HomeController: UIViewController, WKNavigationDelegate {
                 self.saveUserToDatabase(uid: uid!)
                 
             }
+        } else {
+           userID = Auth.auth().currentUser?.uid
         }
         
         
@@ -254,7 +261,6 @@ class HomeController: UIViewController, WKNavigationDelegate {
     // Yeni user oluşturulunca database'e uid'sini kaydet
     func saveUserToDatabase(uid: String){
         
-        
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -262,8 +268,6 @@ class HomeController: UIViewController, WKNavigationDelegate {
         print(formattedDate)
         
         ref.child("users/\(uid)").setValue(["created": formattedDate ])
-        
-        
         
         
     }
@@ -307,7 +311,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
     }
     
     func showActivityIndicatory() {
-       
+       print("- - - -- - - showActivityIndicatory")
         activityView?.startAnimating()
     }
     
