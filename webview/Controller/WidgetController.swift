@@ -17,8 +17,8 @@ class WidgetController: UITableViewController {
     }
     
     func getSavedWidgets() {
-        let fetchRequest: NSFetchRequest<Widget> =  Widget.fetchRequest()
         
+        let fetchRequest: NSFetchRequest<Widget> =  Widget.fetchRequest()
         
         do {
             widgetList = try PersistanceService.context.fetch(fetchRequest)
@@ -101,7 +101,9 @@ class WidgetController: UITableViewController {
     
     @objc func deleteWidget (_ sender:UIButton) {
         let buttonRow = sender.tag
-        print("delete - - - - - \(buttonRow)")
+        let deletedWidget: Widget = widgetList.remove(at: buttonRow)
+        PersistanceService.context.delete(deletedWidget)
+        getSavedWidgets()
         
     }
     
@@ -118,6 +120,7 @@ class WidgetController: UITableViewController {
         print(link)
         if !link.isEmpty {
             
+            // linkin başında http yoksa ekle.
             if !link.contains("http") {
                 link = "http://\(link)"
             }

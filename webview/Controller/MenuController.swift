@@ -39,7 +39,10 @@ class MenuController: UIViewController {
         queryRef.observe(.value, with: { snapshot in
             
             self.count = snapshot.childrenCount
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
             print(" - - - - - - - -- - - -- ")
             print("Count: \(self.count!)")
             

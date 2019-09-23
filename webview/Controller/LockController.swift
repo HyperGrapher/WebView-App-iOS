@@ -57,11 +57,7 @@ class LockController: UIViewController {
         
         faceID()
         
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
-        //            self.handleDismiss()
-        //
-        //
-        //        })
+
         
     }
     

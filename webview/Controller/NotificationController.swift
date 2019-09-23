@@ -105,11 +105,7 @@ class NotificationController: UITableViewController {
     
     // Tıklama olunca Link varsa webview ile aç
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        /** REMOVE
-         */
-        UserDefaults.standard.set(false, forKey: "isTouchIDSet") // TODO remove
-        
+   
         let link: String = notificationList[indexPath.row].link ?? ""
         if !link.isEmpty {
             
@@ -117,7 +113,7 @@ class NotificationController: UITableViewController {
                 UserDefaults.standard.set(link, forKey: "link") // Linki userDefaults'a kaydet
                 handleDismiss() // sayfayı kapat
                 // HomeController'daki listener'ı tetikler ve userDefaults ile gönderilen link açılır.
-                NotificationCenter.default.post(name: Notification.Name("notification_link"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name(Constants.VISIT_URL), object: nil)
                 
             }
             

@@ -311,20 +311,6 @@ class HomeController: UIViewController, WKNavigationDelegate {
             webView?.goBack()
         }
         
-        // TODO: Test sırasında firebase user'ı silmek için
-        // Kaldırılacak
-        
-        
-         
-         do{
-         try Auth.auth().signOut()
-         print("----------  USER DELETED  -------------")
-         }catch{
-         
-         }
-         
-         
-        
         
     }
     
