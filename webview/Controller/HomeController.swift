@@ -11,14 +11,22 @@ class HomeController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     var canGetParams = true
     
+    var homeLink: String?
+    
     // Firebase
     var ref: DatabaseReference!
     
     var widgetList = [Widget]()
+    
+    var activityView: UIActivityIndicatorView?
+    var container: UIView?
    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        
+        
         
         getSavedWidgets()
         
@@ -53,7 +61,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
         ref.child("data/webViewLink").observe(.value) { (snapshot) in
             
             let link = snapshot.value as? String
-            
+            self.homeLink = link
             self.configureWebview(link: link!)
         }
         
@@ -64,6 +72,11 @@ class HomeController: UIViewController, WKNavigationDelegate {
                                               object: nil)
         
         
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+         activityView?.stopAnimating()
+        print(" - - - - - - Stopped ")
     }
     
     // Eğer NotificationController'dan veya WidgetController'dan gelen tıklama varsa linki yükler.
@@ -89,6 +102,29 @@ class HomeController: UIViewController, WKNavigationDelegate {
         }
         
         
+        if container == nil {
+            
+            container = UIView()
+            container!.frame = CGRect(x: 0, y: 0, width: 80, height: 80) // Set X and Y whatever you want
+            container!.backgroundColor = .clear
+        }
+        
+
+        if activityView == nil {
+
+            activityView = UIActivityIndicatorView(style: .whiteLarge)
+            activityView?.center = self.view.center
+            
+            activityView?.hidesWhenStopped = true           
+            
+            container!.addSubview(activityView!)
+            self.view.addSubview(container!)
+            
+        }
+        
+        
+
+        showActivityIndicatory()
         webView?.load(request)
         
         
@@ -259,14 +295,24 @@ class HomeController: UIViewController, WKNavigationDelegate {
         
         let backwardIcon:UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "webview_backward").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleBackward))
         
+        let homeIcon:UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_menu_home").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHome))
+
         
         // Sağdaki ikonları ekle
-        navigationItem.setRightBarButtonItems([exitIcon, refreshIcon, forwardIcon, backwardIcon ], animated: true)
+        navigationItem.setRightBarButtonItems([exitIcon, refreshIcon, forwardIcon, backwardIcon, homeIcon ], animated: true)
         // Soldaki ikonları ekle
         navigationItem.setLeftBarButtonItems([drawerMenuIcon], animated: true)
         
         
     }
+    
+    func showActivityIndicatory() {
+       
+        activityView?.startAnimating()
+    }
+    
+    
+  
     
     
     
@@ -285,6 +331,18 @@ class HomeController: UIViewController, WKNavigationDelegate {
                                to: UIApplication.shared, for: nil)
         
     }
+    
+    
+    
+    @objc func handleHome() {
+        
+        if homeLink != nil {
+            configureWebview(link: homeLink!)
+
+        }
+        
+    }
+    
     
     
     @objc func handleReload() {
