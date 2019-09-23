@@ -10,13 +10,18 @@ import UIKit
 import NotificationCenter
 import CoreData
 
-class TodayViewController: UIViewController, NCWidgetProviding {
+class TodayViewController: UITableViewController, NCWidgetProviding {
     
+    
+    let cellID = "widget"
     var widgetList = [Widget]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-         someOtherFunction()
+        getSavedWidgets()
+        configureUI()
     }
         
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -29,14 +34,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         completionHandler(NCUpdateResult.newData)
     }
     
-    func someOtherFunction() {
-        // get the managed context
-        let fetchRequest: NSFetchRequest<Widget> =  Widget.fetchRequest()
+    func getSavedWidgets() {
         
+        let fetchRequest: NSFetchRequest<Widget> =  Widget.fetchRequest()
         
         do {
             widgetList = try PersistanceService.context.fetch(fetchRequest)
-            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         } catch  {
             
         }
@@ -46,11 +52,39 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         for it in widgetList {
             if let item = it.name {
                 print(item)
-                myLabel.text = item
             }
             
         }
         print("-- END Widget List")
-        // have fun
+        
     }
-  
+    
+    
+    // UI setup
+    func configureUI() {
+        
+        tableView.register(UITableViewCell.self  , forCellReuseIdentifier: cellID)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50
+        
+        }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return widgetList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: cellID)
+        
+        
+        cell.textLabel?.text = widgetList[indexPath.row].name?.uppercased()
+        
+        return cell
+    }
+    
+    
+    
+    
+
+}

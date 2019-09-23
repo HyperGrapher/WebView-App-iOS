@@ -103,6 +103,7 @@ class WidgetController: UITableViewController {
         let buttonRow = sender.tag
         let deletedWidget: Widget = widgetList.remove(at: buttonRow)
         PersistanceService.context.delete(deletedWidget)
+        
         getSavedWidgets()
         
     }
