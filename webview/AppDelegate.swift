@@ -59,7 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
    
-    /**
     // MARK: - Notification
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -82,7 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler()
     }
  
- */
     
 
 }

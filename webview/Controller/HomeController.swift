@@ -23,39 +23,38 @@ class HomeController: UIViewController, WKNavigationDelegate {
     var container: UIView?
     
     var userID: String?
+    
+    private var loadingObservation: NSKeyValueObservation?
+    
+    // Loading indicator
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .whiteLarge)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.color = .black
+        return spinner
+    }()
    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        
-        configureWebview(link: "")
-        
-        getSavedWidgets()
-        
-        // touch id ile giriş aktif mi?
-        let isTouchIDSet = UserDefaults.standard.bool(forKey: Constants.FACEID_USER_DEFAULT_KEY)
-        let isAllowedToRun = false  //UserDefaults.standard.bool(forKey: "isAllowedToRun")
-        
-        print(" - - - - - touch id is \(isTouchIDSet)")
-        
-        // Aktifse LockController'a git.
-        if isTouchIDSet{
-            print("-------------- touch id is set")
-            let lockCont = LockController()
-            present(UINavigationController(rootViewController: lockCont), animated: true, completion: nil)
-            UserDefaults.standard.set(true, forKey: "isAllowedToRun")
-        } else {
-            print("---------- Skipping touch id isTouchIDSet: \(isTouchIDSet)   -   isAllowedToRun: \(isAllowedToRun)")
-        }
-        
-        view.backgroundColor = Theme.current.background
-        
-        // Eğer firebase user yoksa oluştur
-        createAnonymUserIfNotExist()
+        setupView()
         
         configureNavigationBar()
+      
+        getSavedWidgets()
         
+        faceIDCheck()
+        
+        createAnonymUserIfNotExist()
+        
+        getFirebaseLink()
+        
+        setupObservers()
+        
+    }
+    
+    func getFirebaseLink() {
         
         ref = Database.database().reference()
         
@@ -68,22 +67,80 @@ class HomeController: UIViewController, WKNavigationDelegate {
             self.configureWebview(link: link!)
         }
         
-        // NotificationController'dan veya WidgetController'dan gelen tıklamaları dinler
-        // ve visitNotificationLink fonksiyonunu çalıştırır.
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(visitLink), name: Notification.Name(Constants.VISIT_URL),
-                                              object: nil)
+    }
+    
+    
+    func setupView() {
+        
+        view.backgroundColor = Theme.current.background
+        
+        webView = WKWebView()
+        webView.navigationDelegate = self
+
+        view = webView
+
+        
+        // Loading Indicator methodu
+        loadingObservation = webView.observe(\.isLoading, options: [.new, .old]) { [weak self] (_, change) in
+            guard let strongSelf = self else { return }
+            
+            let new = change.newValue!
+            let old = change.oldValue!
+            
+            if new && !old {
+                strongSelf.view.addSubview(strongSelf.loadingIndicator)
+                strongSelf.loadingIndicator.startAnimating()
+                NSLayoutConstraint.activate([strongSelf.loadingIndicator.centerXAnchor.constraint(equalTo: strongSelf.view.centerXAnchor),
+                                             strongSelf.loadingIndicator.centerYAnchor.constraint(equalTo: strongSelf.view.centerYAnchor)])
+                strongSelf.view.bringSubviewToFront(strongSelf.loadingIndicator)
+            }
+            else if !new && old {
+                strongSelf.loadingIndicator.stopAnimating()
+                strongSelf.loadingIndicator.removeFromSuperview()
+            }
+        }
+        
         
         
     }
     
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-         activityView?.stopAnimating()
-        print(" - - - - - - stopAnimating ")
+    
+    func faceIDCheck() {
+        // touch id ile giriş aktif mi?
+        let isTouchIDSet = UserDefaults.standard.bool(forKey: Constants.FACEID_USER_DEFAULT_KEY)
+        
+        // Aktifse LockController'a git.
+        if isTouchIDSet{
+            let lockCont = LockController()
+            present(UINavigationController(rootViewController: lockCont), animated: true, completion: nil)
+            UserDefaults.standard.set(true, forKey: "isAllowedToRun")
+        }
+        
+        
+        
+    }
+
+    // Cookie hatırlama methodu
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        guard let response = navigationResponse.response as? HTTPURLResponse,
+            let url = navigationResponse.response.url else {
+                decisionHandler(.cancel)
+                return
+        }
+        
+        if let headerFields = response.allHeaderFields as? [String: String] {
+            let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: url)
+            cookies.forEach { cookie in
+                webView.configuration.websiteDataStore.httpCookieStore.setCookie(cookie)
+            }
+        }
+        
+        decisionHandler(.allow)
     }
     
     // Eğer NotificationController'dan veya WidgetController'dan gelen tıklama varsa linki yükler.
     @objc func visitLink (notification: NSNotification){
+        
         let link = UserDefaults.standard.string(forKey: "link") ?? ""
         configureWebview(link: link)
         // Link alındıktan sonra silinebilir.
@@ -91,43 +148,14 @@ class HomeController: UIViewController, WKNavigationDelegate {
         
     }
     
+    // Eğer NotificationController'dan veya WidgetController'dan gelen tıklama varsa linki yükler.
+    @objc func visitHome (notification: NSNotification){
+        configureWebview(link: homeLink!)
+    }
     
     
     func configureWebview(link: String) {
-        
-        
 
-        
-        if webView == nil {
-            webView = WKWebView()
-            webView.navigationDelegate = self
-            view = webView
-        }
-        
-        
-        if container == nil {
-            
-            container = UIView()
-            container!.frame = CGRect(x: 0, y: 0, width: 80, height: 80) // Set X and Y whatever you want
-            container!.backgroundColor = .clear
-        }
-        
-        
-        if activityView == nil {
-            
-            activityView = UIActivityIndicatorView(style: .whiteLarge)
-            activityView?.center = self.view.center
-            
-            activityView?.hidesWhenStopped = true
-            
-            container!.addSubview(activityView!)
-            self.view.addSubview(container!)
-            
-        }
-        
-        showActivityIndicatory()
-
-        
         if !link.isEmpty {
             
             let url = URL(string: link)
@@ -136,11 +164,7 @@ class HomeController: UIViewController, WKNavigationDelegate {
             webView?.load(request)
             
         }
-        
-        
-        
-        
-        
+
     }
     
     // Tıklanan URL'leri sapta ve ilgili methodu çağır.
@@ -151,6 +175,11 @@ class HomeController: UIViewController, WKNavigationDelegate {
         guard let myUrl = navigationAction.request.url, let scheme = myUrl.scheme, scheme.contains("http") else {
             decisionHandler(.cancel)
             return
+        }
+        
+        // Eğer URL içinde yenisekme geçiyorsa default browser ile aç
+        if myUrl.absoluteString.contains("yenisekme"){
+            UIApplication.shared.open(myUrl)
         }
         
         // Eğer varsa URL parametrelerini al
@@ -171,7 +200,6 @@ class HomeController: UIViewController, WKNavigationDelegate {
                 }
                 
                
-                
             }
         
             // Her seferinde değeri true olarak resetle
@@ -186,10 +214,9 @@ class HomeController: UIViewController, WKNavigationDelegate {
     
     
     var currentSite = ""
-    func  saveWidget(action: String, siteName: String, url: String) {
+    func saveWidget(action: String, siteName: String, url: String) {
         
 
-        
         // Bazı siteler mobil siteye yönlendiriyor, iki kez aynı sayfa çağrılmış oluyor
         // Aynı parametrelerle iki kez çağırmayı engellemek için önceki site ismi ile kontrol ediyoruz.
         if currentSite != siteName {
@@ -272,6 +299,19 @@ class HomeController: UIViewController, WKNavigationDelegate {
         
     }
     
+    func setupObservers() {
+        // Ana Sayfa'ya tıklanınca bu observer ile firebase linki açılır
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(visitHome), name: Notification.Name("visitHome"),
+                                  object: nil)
+        
+        // NotificationController'dan veya WidgetController'dan gelen tıklamaları dinler
+        // ve visitNotificationLink fonksiyonunu çalıştırır.
+        NotificationCenter.default.addObserver(self, selector:
+            #selector(visitLink), name: Notification.Name(Constants.VISIT_URL),
+                                  object: nil)
+    }
+    
     
     
     // Navigation bar
@@ -309,14 +349,6 @@ class HomeController: UIViewController, WKNavigationDelegate {
         
         
     }
-    
-    func showActivityIndicatory() {
-       print("- - - -- - - showActivityIndicatory")
-        activityView?.startAnimating()
-    }
-    
-    
-  
     
     
     

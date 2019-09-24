@@ -43,9 +43,7 @@ class MenuController: UIViewController {
                 self.tableView.reloadData()
             }
             
-            print(" - - - - - - - -- - - -- ")
-            print("Count: \(self.count!)")
-            
+                    
         })
         
         

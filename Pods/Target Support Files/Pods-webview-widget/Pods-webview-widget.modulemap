@@ -1,0 +1,6 @@
+framework module Pods_webview_widget {
+  umbrella header "Pods-webview-widget-umbrella.h"
+
+  export *
+  module * { export * }
+}

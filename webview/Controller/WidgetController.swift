@@ -33,6 +33,7 @@ class WidgetController: UITableViewController {
     // Sayfayı kapat
     @objc func handleDismiss() {
         dismiss(animated: true, completion: nil)
+
     }
     
     // UI setup

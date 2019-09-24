@@ -123,6 +123,11 @@
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
+		<key>Pods-webview-widget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
 		<key>Pods-webview.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -135,7 +140,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>20</integer>
+			<integer>21</integer>
 		</dict>
 		<key>leveldb-library.xcscheme</key>
 		<dict>

@@ -94,7 +94,7 @@ class ContainerController: UIViewController {
     func didSelectMenuOption (menuOption: MenuOption) {
         switch menuOption {
         case .MainPage:
-            return // sadece return
+            NotificationCenter.default.post(name: Notification.Name("visitHome"), object: nil)
         case .Password:
             let passwordCont = FaceIDController()
             present(UINavigationController(rootViewController: passwordCont), animated: true, completion: nil)
