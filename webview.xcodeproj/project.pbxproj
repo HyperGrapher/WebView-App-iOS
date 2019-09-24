@@ -10,11 +10,6 @@
 		670C110723356E0500A3A6BF /* FaceIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C110623356E0500A3A6BF /* FaceIDView.swift */; };
 		6735376323315AB000EC7E06 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6735376223315AB000EC7E06 /* ThemeView.swift */; };
 		6753AE13233108CF0037FF95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6753AE12233108CF0037FF95 /* Constants.swift */; };
-		676BA7A723352519007E3640 /* Widget+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792A7D5233403F300521FC0 /* Widget+CoreDataClass.swift */; };
-		676BA7A82335251C007E3640 /* Widget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792A7D4233403F300521FC0 /* Widget+CoreDataProperties.swift */; };
-		676BA7A92335251F007E3640 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB2C2333F6F80026CAC1 /* PersistanceService.swift */; };
-		676BA7AA23352885007E3640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 677A0DD12330C62600CB8B3A /* Assets.xcassets */; };
-		676BA7AC23352A27007E3640 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676BA7AB23352A27007E3640 /* CoreData.framework */; };
 		677A0DC82330C62500CB8B3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DC72330C62500CB8B3A /* AppDelegate.swift */; };
 		677A0DD02330C62500CB8B3A /* webview.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DCE2330C62500CB8B3A /* webview.xcdatamodeld */; };
 		677A0DD22330C62600CB8B3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 677A0DD12330C62600CB8B3A /* Assets.xcassets */; };
@@ -36,13 +31,7 @@
 		6792A7D7233403F300521FC0 /* Widget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6792A7D4233403F300521FC0 /* Widget+CoreDataProperties.swift */; };
 		679AFB2D2333F6F80026CAC1 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB2C2333F6F80026CAC1 /* PersistanceService.swift */; };
 		679AFB2F2333F9B10026CAC1 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB2E2333F9B10026CAC1 /* WidgetModel.swift */; };
-		679AFB362333FBF40026CAC1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679AFB352333FBF40026CAC1 /* NotificationCenter.framework */; };
-		679AFB392333FBF40026CAC1 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB382333FBF40026CAC1 /* TodayViewController.swift */; };
-		679AFB3C2333FBF40026CAC1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 679AFB3A2333FBF40026CAC1 /* MainInterface.storyboard */; };
-		679AFB402333FBF40026CAC1 /* widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 679AFB342333FBF40026CAC1 /* widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		679AFB472333FE2A0026CAC1 /* NSCustomPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB462333FE2A0026CAC1 /* NSCustomPersistentContainer.swift */; };
-		679AFB49233401EF0026CAC1 /* NSCustomPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679AFB48233401EF0026CAC1 /* NSCustomPersistentContainer.swift */; };
-		679AFB4B2334024F0026CAC1 /* webview.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 677A0DCE2330C62500CB8B3A /* webview.xcdatamodeld */; };
 		679E2BB3233573ED00AF522C /* WidgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679E2BB2233573ED00AF522C /* WidgetController.swift */; };
 		67A3ADA1233122DF00D122CF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A3ADA0233122DF00D122CF /* Colors.xcassets */; };
 		67A3ADA3233123A500D122CF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3ADA2233123A500D122CF /* Theme.swift */; };
@@ -51,30 +40,6 @@
 		67E8508323312B30002E6C0D /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E8508223312B30002E6C0D /* LightTheme.swift */; };
 		7913B28973D1A2ABE6EC84D7 /* Pods_webview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965986EE0206BA12D00EA8C1 /* Pods_webview.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		679AFB3E2333FBF40026CAC1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 677A0DBC2330C62500CB8B3A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 679AFB332333FBF40026CAC1;
-			remoteInfo = widget;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		679AFB442333FBF40026CAC1 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				679AFB402333FBF40026CAC1 /* widget.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		34821E5AE0D1815CCAC0418C /* Pods-webview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webview.debug.xcconfig"; path = "Target Support Files/Pods-webview/Pods-webview.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,14 +72,8 @@
 		6792A7D5233403F300521FC0 /* Widget+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Widget+CoreDataClass.swift"; path = "/Users/burak/Projects/Ticari/webview/webview/Persistance/Widget+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		679AFB2C2333F6F80026CAC1 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		679AFB2E2333F9B10026CAC1 /* WidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetModel.swift; sourceTree = "<group>"; };
-		679AFB342333FBF40026CAC1 /* widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		679AFB352333FBF40026CAC1 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		679AFB382333FBF40026CAC1 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		679AFB3B2333FBF40026CAC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		679AFB3D2333FBF40026CAC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		679AFB452333FCA90026CAC1 /* widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widget.entitlements; sourceTree = "<group>"; };
 		679AFB462333FE2A0026CAC1 /* NSCustomPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCustomPersistentContainer.swift; sourceTree = "<group>"; };
-		679AFB48233401EF0026CAC1 /* NSCustomPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCustomPersistentContainer.swift; sourceTree = "<group>"; };
 		679E2BB2233573ED00AF522C /* WidgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetController.swift; sourceTree = "<group>"; };
 		67A3ADA0233122DF00D122CF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		67A3ADA2233123A500D122CF /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -131,15 +90,6 @@
 			files = (
 				677A0DF92330CBCB00CB8B3A /* WebKit.framework in Frameworks */,
 				7913B28973D1A2ABE6EC84D7 /* Pods_webview.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		679AFB312333FBF40026CAC1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				676BA7AC23352A27007E3640 /* CoreData.framework in Frameworks */,
-				679AFB362333FBF40026CAC1 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				677A0DC62330C62500CB8B3A /* webview */,
-				679AFB372333FBF40026CAC1 /* widget */,
 				677A0DC52330C62500CB8B3A /* Products */,
 				677A0DF72330CBCB00CB8B3A /* Frameworks */,
 				1286114283CC7359799FF67F /* Pods */,
@@ -179,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				677A0DC42330C62500CB8B3A /* webview.app */,
-				679AFB342333FBF40026CAC1 /* widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,18 +218,6 @@
 			path = Persistance;
 			sourceTree = "<group>";
 		};
-		679AFB372333FBF40026CAC1 /* widget */ = {
-			isa = PBXGroup;
-			children = (
-				679AFB452333FCA90026CAC1 /* widget.entitlements */,
-				679AFB382333FBF40026CAC1 /* TodayViewController.swift */,
-				679AFB3A2333FBF40026CAC1 /* MainInterface.storyboard */,
-				679AFB3D2333FBF40026CAC1 /* Info.plist */,
-				679AFB48233401EF0026CAC1 /* NSCustomPersistentContainer.swift */,
-			);
-			path = widget;
-			sourceTree = "<group>";
-		};
 		67A3ADA42331280900D122CF /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,34 +241,15 @@
 				677A0DC12330C62500CB8B3A /* Frameworks */,
 				677A0DC22330C62500CB8B3A /* Resources */,
 				523997E33B9C104B7E593909 /* [CP] Embed Pods Frameworks */,
-				679AFB442333FBF40026CAC1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				679AFB3F2333FBF40026CAC1 /* PBXTargetDependency */,
 			);
 			name = webview;
 			productName = webview;
 			productReference = 677A0DC42330C62500CB8B3A /* webview.app */;
 			productType = "com.apple.product-type.application";
-		};
-		679AFB332333FBF40026CAC1 /* widget */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 679AFB412333FBF40026CAC1 /* Build configuration list for PBXNativeTarget "widget" */;
-			buildPhases = (
-				679AFB302333FBF40026CAC1 /* Sources */,
-				679AFB312333FBF40026CAC1 /* Frameworks */,
-				679AFB322333FBF40026CAC1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = widget;
-			productName = widget;
-			productReference = 679AFB342333FBF40026CAC1 /* widget.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -355,14 +272,6 @@
 							};
 						};
 					};
-					679AFB332333FBF40026CAC1 = {
-						CreatedOnToolsVersion = 10.3;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
-					};
 				};
 			};
 			buildConfigurationList = 677A0DBF2330C62500CB8B3A /* Build configuration list for PBXProject "webview" */;
@@ -379,7 +288,6 @@
 			projectRoot = "";
 			targets = (
 				677A0DC32330C62500CB8B3A /* webview */,
-				679AFB332333FBF40026CAC1 /* widget */,
 			);
 		};
 /* End PBXProject section */
@@ -393,15 +301,6 @@
 				67A3ADA1233122DF00D122CF /* Colors.xcassets in Resources */,
 				677A0DD22330C62600CB8B3A /* Assets.xcassets in Resources */,
 				677A0DFB2330CD3600CB8B3A /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		679AFB322333FBF40026CAC1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				676BA7AA23352885007E3640 /* Assets.xcassets in Resources */,
-				679AFB3C2333FBF40026CAC1 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,28 +382,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		679AFB302333FBF40026CAC1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				679AFB49233401EF0026CAC1 /* NSCustomPersistentContainer.swift in Sources */,
-				676BA7A92335251F007E3640 /* PersistanceService.swift in Sources */,
-				676BA7A723352519007E3640 /* Widget+CoreDataClass.swift in Sources */,
-				676BA7A82335251C007E3640 /* Widget+CoreDataProperties.swift in Sources */,
-				679AFB392333FBF40026CAC1 /* TodayViewController.swift in Sources */,
-				679AFB4B2334024F0026CAC1 /* webview.xcdatamodeld in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		679AFB3F2333FBF40026CAC1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 679AFB332333FBF40026CAC1 /* widget */;
-			targetProxy = 679AFB3E2333FBF40026CAC1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		677A0DD32330C62600CB8B3A /* LaunchScreen.storyboard */ = {
@@ -513,14 +391,6 @@
 				677A0DD42330C62600CB8B3A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		679AFB3A2333FBF40026CAC1 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				679AFB3B2333FBF40026CAC1 /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -646,7 +516,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 34821E5AE0D1815CCAC0418C /* Pods-webview.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = webview/webview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -669,7 +538,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F1F53C8712016A6DAEC8420 /* Pods-webview.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = webview/webview.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -683,48 +551,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.link.webview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		679AFB422333FBF40026CAC1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_ENTITLEMENTS = widget/widget.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D6H4353AJV;
-				INFOPLIST_FILE = widget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.link.webview.widget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		679AFB432333FBF40026CAC1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_ENTITLEMENTS = widget/widget.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D6H4353AJV;
-				INFOPLIST_FILE = widget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.link.webview.widget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -747,15 +573,6 @@
 			buildConfigurations = (
 				677A0DDA2330C62600CB8B3A /* Debug */,
 				677A0DDB2330C62600CB8B3A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		679AFB412333FBF40026CAC1 /* Build configuration list for PBXNativeTarget "widget" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				679AFB422333FBF40026CAC1 /* Debug */,
-				679AFB432333FBF40026CAC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

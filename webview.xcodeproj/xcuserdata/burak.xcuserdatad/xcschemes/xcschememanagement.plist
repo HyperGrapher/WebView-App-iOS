@@ -9,10 +9,13 @@
 			<key>orderHint</key>
 			<integer>22</integer>
 		</dict>
-		<key>widget.xcscheme_^#shared#^_</key>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>677A0DC32330C62500CB8B3A</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>23</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
